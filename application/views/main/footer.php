@@ -1,3 +1,4 @@
+<br><br><br>
 </section>
 
     
@@ -19,6 +20,7 @@
                 </div>
             </div>
         </footer>
+        <div id="notifications"></div>
         
         <script src="<?=theme_url();?>/js/bootstrap/bootstrap-transition.js" type="text/javascript" ></script>
         <script src="<?=theme_url();?>/js/bootstrap/bootstrap-alert.js" type="text/javascript" ></script>
@@ -37,6 +39,11 @@
         <script src="<?=theme_url();?>/js/jquery/jquery-tablesorter.js" type="text/javascript" ></script>
         <script src="<?=theme_url();?>/js/jquery/jquery-chosen.js" type="text/javascript" ></script>
         <script src="<?=theme_url();?>/js/jquery/virtual-tour.js" type="text/javascript" ></script>
+        <script src="<?=theme_url();?>/js/notify/Notify.js" type="text/javascript" ></script>
+       <!--
+        <script type="text/javascript" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+        -->
+       <script src="http://1000hz.github.io/bootstrap-validator/dist/validator.min.js"></script>
         <script type="text/javascript">
         $(function() {
             $('#sample-table').tablesorter();
@@ -44,6 +51,23 @@
             $(".chosen").chosen();
         });
     </script>
-
+    
+<?php 
+/*
+if(validation_errors()) {
+    echo '<script type="text/javascript">'; 
+    echo '$(window).bind("load", function() {';
+    echo 'Notify("Insert Error ! : Unit Name ไม่สามารถเป็นค่าว่าง", null, null, "danger");';
+    echo '});';
+    echo '</script>';
+} */
+if(isset($Notify_info)) {
+    echo '<script type="text/javascript">'; 
+    echo '$(window).bind("load", function() {';
+    echo 'Notify("'.$Notify_info.'", null, null, "'.$Notify_Type.'");';
+    echo '});';
+    echo '</script>';
+}
+?>
     </body>
 </html>
