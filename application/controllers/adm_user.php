@@ -83,13 +83,18 @@ class adm_user extends CI_Controller{
 			//echo $user_EMAIL;
 			//echo do_hash($user_PASSWORD,'md5');
 
-			$this->db->select("user_EMAIL,user_PASSWORD,usergroup_ID");
-			$this->db->from("adminsetting_user");
-			$this->db->where("user_EMAIL",$user_EMAIL);
-			$this->db->where("user_PASSWORD",$user_PASSWORD);
+			//$this->db->select("user_EMAIL,user_PASSWORD,department_ID,usergroup_ID,user_FULLNAME");
+			//$this->db->from("adminsetting_user");
+			
+			$this->db->select("*");
+			$this->db->from("adminsetting_user user");
+			$this->db->join("adminsetting_department dep","dep.department_ID=user.department_ID","left");
+			$this->db->join("adminsetting_usergroup grp","grp.usergroup_ID=user.usergroup_ID","left");
+			$this->db->where("user.user_EMAIL",$user_EMAIL);
+			$this->db->where("user.user_PASSWORD",$user_PASSWORD);
 			$query = $this->db->get();
 			$row = $query->row();
-
+			
 			if($query->num_rows()>0) {
 				//echo $user_EMAIL;
 				// /echo $user_PASSWORD;
@@ -98,8 +103,14 @@ class adm_user extends CI_Controller{
 				else :  $user_ADMIN = false;
 				endif;
 				$sess_array = array(
+					'user_ID'=>	$row->userID,
 					'user_EMAIL'=>	$user_EMAIL,
-					'user_admin'=> 	$user_ADMIN
+					'user_ADMIN'=> 	$user_ADMIN,
+					'user_FULLNAME' => $row->user_FULLNAME,
+					'department_ID' => $row->department_ID,
+					'usergroup_ID' => $row->usergroup_ID,
+					'usergroup_NAME' => $row->usergroup_NAME,
+					'department_NAME' => $row->department_NAME
 				);
 				$this->session->set_userdata('loggin_success',$sess_array);
 				redirect(base_url()."main","refresh");

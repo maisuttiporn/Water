@@ -2,6 +2,7 @@
 class adminsetting extends CI_Controller {
 		function index() {
 			$this->load->view("main/header");
+			$this->load->view("main/userinfo");
 			$this->load->view("adminsetting/adminsetting");
 			$this->load->view("main/footer");		
 		}
@@ -298,7 +299,17 @@ class adminsetting extends CI_Controller {
 			}
 		}
 //DEPARTMENT////////////////////////////////////////////////////////////////////////////////////////	
+//PERMISSION ///////////////////////////////////////////////////////////////////////////////////////
+		function permission() {
+			$data = array();
+			
+			$this->load->view("main/header");
+			$this->load->view("adminsetting/adminsetting");
+			$this->load->view("adminsetting/permission",$data);
+			$this->load->view("main/footer");
+		}
 
+//PERMISSION ///////////////////////////////////////////////////////////////////////////////////////
 
 	} //class
 

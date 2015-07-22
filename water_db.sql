@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Jun 24, 2015 at 05:34 PM
+-- Generation Time: Jun 26, 2015 at 04:22 PM
 -- Server version: 5.5.34
 -- PHP Version: 5.4.25
 
@@ -51,7 +51,7 @@ CREATE TABLE `adminsetting_unit` (
   `unit_ID` int(11) NOT NULL AUTO_INCREMENT,
   `unit_NAME` varchar(500) NOT NULL,
   PRIMARY KEY (`unit_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=64 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=66 ;
 
 --
 -- Dumping data for table `adminsetting_unit`
@@ -60,7 +60,9 @@ CREATE TABLE `adminsetting_unit` (
 INSERT INTO `adminsetting_unit` (`unit_ID`, `unit_NAME`) VALUES
 (19, 'ตัน'),
 (20, 'เที่ยว'),
-(63, 'บาท');
+(63, 'บาท'),
+(64, 'adfa'),
+(65, 'adfda');
 
 -- --------------------------------------------------------
 
@@ -77,7 +79,7 @@ CREATE TABLE `adminsetting_user` (
   `usergroup_ID` varchar(20) NOT NULL,
   `user_STATUS` varchar(20) NOT NULL DEFAULT 'new',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=50 ;
 
 --
 -- Dumping data for table `adminsetting_user`
@@ -85,7 +87,8 @@ CREATE TABLE `adminsetting_user` (
 
 INSERT INTO `adminsetting_user` (`ID`, `user_EMAIL`, `user_PASSWORD`, `user_FULLNAME`, `department_ID`, `usergroup_ID`, `user_STATUS`) VALUES
 (47, 'mm@mm', '111111', '11', 'AD01', 'ENVGRP', 'new'),
-(48, 'maisuttiporn@gmail.com', '123456', 'สุทธิพร เรือนเย็น', 'AD01', 'ADMIN', 'new');
+(48, 'maisuttiporn@gmail.com', '123456', 'สุทธิพร เรือนเย็น', 'AD01', 'ADMIN', 'new'),
+(49, 'info@thaionlyone.com', 'thaionlyone', 'แอดมิน รักษ์ดี', 'AD01', 'ADMIN', 'new');
 
 -- --------------------------------------------------------
 
@@ -131,7 +134,7 @@ CREATE TABLE `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('f275480e3c0daa21d81bf1ebb0248db6', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3', 1435141537, '');
+('3e76a59a384916acfc6f7ae305033105', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.6.3 (KHTML, like Gecko) Version/8.0.6 Safari/600.6.3', 1435310468, '');
 
 -- --------------------------------------------------------
 
@@ -171,3 +174,54 @@ INSERT INTO `saleservice_inquiry1` (`ID`, `DOC_ID`, `DOC_DATETIME`, `inquiry_WAS
 (5, 'xx', '2015-06-24 08:23:07', 'adasd', 'asdsad', 'sadsads', 'adasdas', 'dsadasd', 'dasdasdas', 'dasdas', 'dasdas', 'dsadsa', 'dasdsa', 'dsad', 'NEW', 'xx'),
 (6, 'DOC0000006', '2015-06-24 08:34:05', 'adfda', 'fdafda', 'fdaf', 'fad', 'fadfadf', 'dfdsF', 'DSFDS', 'FDSF', 'FDSFDSF', 'DFDS', 'FDSF', 'NEW', 'xx'),
 (7, 'DOC0000007', '2015-06-24 08:37:06', 'X87474', '3049893028493', '18012553', 'น้ำเสียจากการซักล้างไลน์', 'Thai Only One Co.,Ltd.', 'หมู่ที่ 2 ตำบล เขาคันทรง อำเภอ ศรีราชา ชลบุรี 20110', 'สมชาย', 'หัวหน้าฝ่ายผลิต', '0-3841-6953', '0-3841-6953', 'info@thaionlyone.com', 'NEW', 'xx');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `saleservice_inquiry2`
+--
+
+CREATE TABLE `saleservice_inquiry2` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `DOC_ID` varchar(20) NOT NULL,
+  `DOC_DATETIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `inquiry_INDUSTRYTYPE` varchar(200) NOT NULL,
+  `inquiry_MAINPRODUCT` varchar(200) NOT NULL,
+  `inquiry_INDUSTRYWNAME` varchar(200) NOT NULL,
+  `inquiry_CHEMNAME` varchar(200) NOT NULL,
+  `inquiry_PRESENTSTORE` varchar(200) NOT NULL,
+  `inquiry_MAXSTORE` varchar(200) NOT NULL,
+  `inquiry_GENRATEWMONTH` varchar(200) NOT NULL,
+  `inquiry_GENRATEWYEAR` varchar(200) NOT NULL,
+  `inquiry_GENRATEPDAYOPT` varchar(200) NOT NULL,
+  `inquiry_GENRATEPDAYTXT` varchar(200) NOT NULL,
+  `inquiry_GENRATEPMONTHOPT` varchar(200) NOT NULL,
+  `inquiry_GENRATEPMMONTHTXT` varchar(200) NOT NULL,
+  `inquiry_SOLIDOPT` varchar(200) NOT NULL,
+  `inquiry_SOLIDRADIO` varchar(200) NOT NULL,
+  `inquiry_SOLIDTXT` varchar(200) NOT NULL,
+  `inquiry_SLUDGEOPT` varchar(200) NOT NULL,
+  `inquiry_SLUDGERADIO` varchar(200) NOT NULL,
+  `inquiry_WETSOLIDOPT` varchar(200) NOT NULL,
+  `inquiry_LIQUIDOPT` varchar(200) NOT NULL,
+  `inquiry_ODOR` varchar(200) NOT NULL,
+  `inquiry_COLOR` varchar(200) NOT NULL,
+  `inquiry_WATERCONTENT` varchar(200) NOT NULL,
+  `inquiry_WATERBASEOPT` varchar(200) NOT NULL,
+  `inquiry_OILBASEOPT` varchar(200) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `saleservice_inquiry2_wastecomponent`
+--
+
+CREATE TABLE `saleservice_inquiry2_wastecomponent` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `DOC_ID` varchar(20) NOT NULL,
+  `inquiry_WASTECOMPONENT` varchar(200) NOT NULL,
+  `inquiry_APPROX` varchar(200) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;

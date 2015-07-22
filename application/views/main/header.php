@@ -38,20 +38,58 @@
 <div id="body-content">   
 <div class="body-nav body-nav-vertical body-nav-fixed">
     <div class="container">
-        <ul>                                
+    <?php 
+    $mysess = $this->session->userdata('loggin_success');
+    if($mysess["user_EMAIL"]!="") :
+    ?>
+        <ul>      
+
             <li>
-                <a href="#">
-                    <i class="icon-tasks icon-large"></i> Task Process
+                <a href="<?=base_url()?>taskprocess">
+                    <i class="icon-tasks icon-large"></i> <strong>Task Process</strong>
+                </a>
+            </li>   
+            <?php  if($mysess["usergroup_ID"]=="MD") : ?>         
+            <li>
+                <a href="<?=base_url()?>md">
+                    <i class="icon-folder-open icon-large"></i> <strong>MD. </strong>
                 </a>
             </li>
+            <?php endif; ?>
+             <?php  if($mysess["usergroup_ID"]=="SALE01") : ?>         
             <li>
                 <a href="<?=saleservice_url()?>">
-                    <i class="icon-qrcode icon-large"></i> Sale Services 
+                    <i class="icon-folder-open icon-large"></i> <strong>Sale Services</strong>
                 </a>
             </li>
-         
-           
+            <?php endif; ?>
+            <li>
+                <a href="#">
+                    <i class="icon-folder-open icon-large"></i> <strong>ENV Analysis</strong>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="icon-folder-open icon-large"></i> <strong>Operation </strong>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="icon-folder-open icon-large"></i> <strong>Accounting</strong>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="icon-folder-open icon-large"></i> <strong>Transporter</strong>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="icon-info-sign icon-large"></i> <strong>Doc. Flow</strong>
+                </a>
+            </li>         
         </ul>
+    <?php endif;?>
     </div>
 </div>                                 
             <section class="nav nav-page">
@@ -67,26 +105,70 @@
                     <div class="page-nav-options">
                         <div class="span9">
                             <ul class="nav nav-pills">
+                            <!--
                                 <li>
                                     <a href="#"><i class="icon-home icon-large"></i></a>
-                                </li>
+                                </li>-->
+
                             </ul>
+                            
                             <ul class="nav nav-tabs">
+                                <?php $mysess = $this->session->userdata('loggin_success');
+                                if($mysess["user_EMAIL"]!="") : ?>   
                                 <li>
-                                    <a href="<?=main_url()?>"><i class="icon-home"></i>Login</a>
-                                </li>                            
-                                <li><a href="#">User Setting</a></li>
-                                <?php 
-                                    $mysess = $this->session->userdata('loggin_success');
-                                    if($mysess["user_admin"]) :
-                                ?>
+                                    <a href="<?=main_url()?>"><i class="icon-home"></i>Home</a>
+                                </li> 
+                                <?php endif;?>
+                            
+                                <?php $mysess = $this->session->userdata('loggin_success');
+                                if($mysess["user_EMAIL"]!="") : ?>                           
+                                <li><a href="<?=base_url()?>usersetting">User Setting</a></li>
+                                <?php endif;?>
+
+                                <?php $mysess = $this->session->userdata('loggin_success');
+                                if($mysess["user_ADMIN"]) :?>
                                     <li><a href="<?=adminsetting_url();?>">Admin Setting</a></li>
                                 <?php endif;?>
+
+                                <?php $mysess = $this->session->userdata('loggin_success');
+                                if($mysess["user_EMAIL"]!="") :?>                           
                                 <li><a href="<?=base_url();?>adm_user/logout">Logout</a></li>
+                                <?php endif;?>
+
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="page container">
+        <section class="page container">  
+    <div class="span16 pull-right" style="text-align:right;">
+    <?php 
+       $sess_login =  $this->session->userdata("loggin_success");
+       if(!empty($sess_login["user_FULLNAME"])) :
+    ?>
+      <h4>
+      <i class="icon-lock"></i>
+      Welcome back : <strong><?=$sess_login["user_FULLNAME"]?></strong></h4>
+    <?php endif; ?>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

@@ -13,9 +13,7 @@
 				  <a href="<?=adminsetting_url()?>usergroup" class="btn btn-info">
 			      <i class="icon-cogs icon-large"></i> User Group</a>			      
 
-			      <a href="" class="btn btn-danger">
-			      <i class="icon-cogs icon-large"></i> User Permission</a>			      
-
+		
 			      <button type="button" class="btn btn-danger">
 			      <i class="icon-cogs icon-large"></i> Customer</button>    	
 			      
@@ -35,7 +33,7 @@
 			      <button type="button" class="btn btn-danger"><i class="icon-cogs icon-large">		      	
 			      </i> Laboratory Analyses  </button>
 
-
+				
 			    </div>
 				</legend>
 			</div>
