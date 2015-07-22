@@ -4,7 +4,49 @@ class testcon extends CI_Controller{
 	{
 		parent::__construct();
 		//Do your magic here
+		
 	}
+	function mymailx() {
+		//$mail = new $this->mymail();
+		echo "xx";
+        $this->load->library("phpmailer");
+        $this->load->library("smtp");
+        $this->phpmailer->IsSMTP(); // we are going to use SMTP
+
+        $this->phpmailer->SMTPAuth   = true; // enabled SMTP authentication
+        $this->phpmailer->SMTPSecure = "";  // prefix for secure protocol to connect to the server
+        $this->phpmailer->Host       = "mail.thaionlyone.com";      // setting GMail as our SMTP server
+        $this->phpmailer->Port       = 25;                   // SMTP port to connect to GMail
+        $this->phpmailer->Username   = "system@thaionlyone.com";  // user email address
+        $this->phpmailer->Password   = "1q2w3e4r1q2w3e4r";            // password in GMail
+        $this->phpmailer->SetFrom('system@thaionlyone.com', 'Firstname Lastname');  //Who is sending the email
+        $this->phpmailer->AddReplyTo("system@thaionlyone.com","Firstname Lastname");  //email address that receives the response
+        $this->phpmailer->Subject    = "ทดสอบ subject";
+        $this->phpmailer->CharSet = "UTF-8";
+
+
+        $message = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>';
+				$message .= '<body>';
+				$message .= "<p>สวัสดีเพื่อนๆชาวพันทิพค่ะ เราจะมาแชร์วิธีการแต่งหน้าง่ายๆ 5นาทีด้วยเครื่องสำอางแค่7ชิ้น เหมาะกับวัยเพิ่งเริ่มทำงาน(อย่างเรา) ในชั่วโมงที่รีบๆ เช่น วันที่ตื่นสาย 5555 เครื่องสำอางเราเป็นของฝาก</p>";
+       		   		$message .= '</body></html>';
+
+
+
+        $this->phpmailer->Body      =   $message;
+        $this->phpmailer->AltBody    = "Plain text message";
+
+            $destino = "env@thaionlyone.com"; // Who is addressed the email to
+        $this->phpmailer->AddAddress($destino, "To Name");
+    
+
+        if(!$this->phpmailer->Send()) {
+            $data["message"] = "Error: " . $this->phpmailer->ErrorInfo;
+        } else {
+            echo "Message sent correctly!";
+        }
+
+    }
+
 	function getuser3tb() {
 		$this->db->select("*");
 		$this->db->from("adminsetting_user user");
@@ -32,7 +74,7 @@ class testcon extends CI_Controller{
 
 	function testmail() {
 		$this->load->model("sendmail_model");
-		if(!$this->sendmail_model->testmail("maike.tv@live.com")){
+		if(!$this->sendmail_model->testmail("system@thaionlyone.com")){
 			echo $this->email->print_debugger();
 		} else {
 			echo "ok";
