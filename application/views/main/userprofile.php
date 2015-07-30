@@ -11,7 +11,7 @@
 				<h4>กลุ่มผู้ใช้งาน: <?=$usergroup_ID?>:<?=$usergroup_NAME?></h4>
 			</div>
 			<div class="span9">
-				<img src="<?=base_url()?>theme/myimg/login.jpg" alt="">
+				<img src="<?=base_url()?>theme/login.jpg" alt="">
 			</div>
 		</div>
 	</div>

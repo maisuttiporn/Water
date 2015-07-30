@@ -5,7 +5,6 @@ class taskprocess extends CI_Controller{
 		parent::__construct();
 		//Do your magic here
 	}
-
 	function index() {
 		$data = array();
 		$mysess = $this->session->userdata('loggin_success');

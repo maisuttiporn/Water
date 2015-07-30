@@ -10,11 +10,13 @@ class pdf {
  
     function load($param=NULL)
     {
-        include_once APPPATH.'/third_party/mpdf/mpdf.php';
+        include_once APPPATH.'/third_party/mpdf60/mpdf.php';
          
         if ($params == NULL)
         {
-            $param = '"UTF-8","A4","","",10,10,10,10,6,3';         
+            $param = '"UTF-8","A4","","",10,10,10,10,6,3';     
+            //$param =  "'th', 'A4-L', '0', 'THSaraban'";
+            //'th', 'A4-L', '0', 'THSaraban' 
         }
          
         return new mPDF($param);

@@ -26,9 +26,9 @@ class testcon extends CI_Controller{
 
 
         $message = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>';
-				$message .= '<body>';
-				$message .= "<p>สวัสดีเพื่อนๆชาวพันทิพค่ะ เราจะมาแชร์วิธีการแต่งหน้าง่ายๆ 5นาทีด้วยเครื่องสำอางแค่7ชิ้น เหมาะกับวัยเพิ่งเริ่มทำงาน(อย่างเรา) ในชั่วโมงที่รีบๆ เช่น วันที่ตื่นสาย 5555 เครื่องสำอางเราเป็นของฝาก</p>";
-       		   		$message .= '</body></html>';
+        $message .= '<body>';
+        $message .= "<p>สวัสดีเพื่อนๆชาวพันทิพค่ะ เราจะมาแชร์วิธีการแต่งหน้าง่ายๆ 5นาทีด้วยเครื่องสำอางแค่7ชิ้น เหมาะกับวัยเพิ่งเริ่มทำงาน(อย่างเรา) ในชั่วโมงที่รีบๆ เช่น วันที่ตื่นสาย 5555 เครื่องสำอางเราเป็นของฝาก</p>";
+        $message .= '</body></html>';
 
 
 
@@ -73,13 +73,8 @@ class testcon extends CI_Controller{
 	}
 
 	function testmail() {
-		$this->load->model("sendmail_model");
-		if(!$this->sendmail_model->testmail("system@thaionlyone.com")){
-			echo $this->email->print_debugger();
-		} else {
-			echo "ok";
-			echo $this->email->print_debugger();
-		}
+		$this->load->model("sendmail_model");		
+		echo $this->sendmail_model->testmail("env@thaionlyone.com");	
 	}
 function test_pdf(){
 //this data will be passed on to the view
@@ -97,7 +92,9 @@ $this->load->library('pdf');
 
 //actually, you can pass mPDF parameter on this load() function
 $pdf = $this->pdf->load();
-$pdf->SetAutoFont();
+//$pdf->SetAutoFont();
+$pdf->autoScriptToLang = true;
+$pdf->autoLangToFont = true;
 //generate the PDF!
 $pdf->WriteHTML($html);
 //offer it to user via browser download! (The PDF won't be saved on your server HDD)

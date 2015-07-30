@@ -72,10 +72,10 @@ class workflow extends CI_Controller{
 
 		$this->workflow_model->techreviewapp_updateqt($qt_id,$user_ID,$app);
 		if($this->workflow_model->techreview_checkapp($qt_id)) :	
-			echo "aa";	
+			//echo "aa";	
 
 			if(!$this->workflow_model->techreviewprove_check($qt_id)) :
-				echo "bb";
+				//echo "bb";
 				$data = array(
 					"msg_body"		=>	"มีการอนุมัติตามเงื่อไข",
 					"msg_type"		=>	"techreviewprove",
